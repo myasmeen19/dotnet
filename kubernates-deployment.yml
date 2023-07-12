@@ -1,21 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: docker
   labels:
-    app: nginx
+    app: myapp
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: nginx
+      app: myapp
   template:
     metadata:
       labels:
-        app: nginx
+        app: myapp
     spec:
       containers:
-      -  name: yasmeen
-         image: dotnet-1-web:latest
-         ports:
-        -  containerPort: 5000
+      - name: dockerdep-10-app
+        image: yasmeenmaligeli/dotnet-1-web
+        
+        ports:
+        - containerPort: 80
