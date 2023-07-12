@@ -17,7 +17,7 @@ spec:
         app: dotnetdemo
     spec:
       containers:
-        name: yasmeen
-          image: dotnet-1-web:latest
-          ports:
-            containerPort: 80
+      - name: yasmeen
+        image: dotnet-1-web:latest
+        ports:
+        - containerPort: 80
