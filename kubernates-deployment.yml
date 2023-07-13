@@ -17,8 +17,7 @@ spec:
       containers:
       - name: dockerdep-10-app
         image: dockerregister12.azurecr.io/dotnet-1-web
-        
-        ports:80
+        ports: 80
         - containerPort: 5000
         imagepullsecrets:
         - name: aks12
