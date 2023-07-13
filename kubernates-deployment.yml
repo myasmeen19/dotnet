@@ -14,7 +14,7 @@ spec:
     metadata:
       labels:
         app: myapp
-      spec:
+    spec:
       containers:
       - name: dockerdep-10-app
         image: dockerregister12.azurecr.io/dotnet-1-web
