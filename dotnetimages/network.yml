@@ -1,0 +1,12 @@
+# network-policy.yaml
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-myapp-access
+  namespace: yasu
+spec:
+  podSelector:
+    matchLabels:
+      app: dotnet-1-web
+  ingress:
+  - {}
