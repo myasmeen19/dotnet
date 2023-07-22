@@ -1,32 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dottnetimage
+  name: dotnet-1-web
 spec:
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 0
   replicas: 2
   selector:
     matchLabels:
-      app: dottnetimage
+      app: dotnet-1-web
   template:
     metadata:
       labels:
-        app: dottnetimage
+        app: dotnet-1-web
     spec:
       containers:
-      - name: dottnetimage
-        image: book12.azurecr.io/dotnet-1-web:latest
-        ports:
-        - containerPort: 80
+      - name: dotnet-1-web
+        image: probe1.azurecr.io/dotnet-1-web:latest
         resources:
-          requests:
-            cpu: "100m" 
           limits:
-            cpu: "300m" 
+            cpu: "1"
+            memory: "512Mi"
+          requests:
+            cpu: "0.5"
+            memory: "256Mi"
         livenessProbe:
           httpGet:
             path: /healthz
@@ -43,5 +38,5 @@ spec:
         - name: CONFIG_KEY
           valueFrom:
             configMapKeyRef:
-              name: dottnetimage-configmap
+              name: dotnet-1-web-configmap
               key: ENV_VARIABLE_1
