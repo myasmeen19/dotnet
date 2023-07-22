@@ -39,5 +39,5 @@ spec:
         - name: CONFIG_KEY
           valueFrom:
             configMapKeyRef:
-              name: dotnet-1-web-configmap
+              name: -1-wedotnetb-configmap
               key: ENV_VARIABLE_1
