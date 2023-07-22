@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: dotnet-1-web
+  namespace: yasu
 spec:
   replicas: 2
   selector:
@@ -14,7 +15,7 @@ spec:
     spec:
       containers:
       - name: dotnet-1-web
-        image: probe1.azurecr.io/dotnet-1-web:latest
+        image: yasmeenmaligeli/dotnet-1-web
         resources:
           limits:
             cpu: "1"
@@ -31,7 +32,7 @@ spec:
         readinessProbe:
           httpGet:
             path: /readiness
-            port: 80
+            port: 5000
           initialDelaySeconds: 5
           periodSeconds: 10
         env:
