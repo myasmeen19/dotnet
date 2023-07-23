@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: dotnet
+spec:
+  selector:
+    matchLabels:
+      app: dotnet
+  template:
+    metadata:
+      labels:
+        app: dotnet
+    spec:
+      containers:
+      - name: dotnet
+        image: probe1.azurecr.io/dotnet:1.0
+        ports:
+           - containerPort: 80
+             protocol: TCP
+        volumeMounts:
+           - name: varlog
+             mountPath: /var/log
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - name: varlog
+          hostPath:
+            path: /var/log       
