@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: dotnet
+  name: fluentd
 spec:
   selector:
     matchLabels:
-      app: dotnet
+      app: fluentd
   template:
     metadata:
       labels:
-        app: dotnet
+        app: fluentd
     spec:
       containers:
-      - name: dotnet
+      - name: fluentd
         image: probe1.azurecr.io/dotnet:1.0
         ports:
            - containerPort: 80
