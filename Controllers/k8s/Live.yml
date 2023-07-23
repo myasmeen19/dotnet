@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dotnet
+  template:
+    metadata:
+      labels:
+        app: dotnet
+    spec:
+      containers:
+      - name: dotnet
+        image: probe1.azurecr.io/dotnet:1.0
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: "100m" 
+          limits:
+            cpu: "300m" 
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        readinessProbe:
+          httpGet:
+            path: /readiness
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        env:
+        - name: CONFIG_KEY
+          valueFrom:
+            configMapKeyRef:
+              name: dotnet-configmap
+              key: ENV_VARIABLE_1
