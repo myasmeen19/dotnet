@@ -1,16 +1,16 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: myapp
+  name: dotnet-1-web
   namespace: yasmeen
 spec:
   podSelector:
     matchLabels:
-      app: myapp
+      app: dotnet-1-web
   policyTypes:
     - Ingress
   ingress:
     - from:
       - podSelector:
           matchLabels:
-            role: myapp
+            role: dotnet-1-web
