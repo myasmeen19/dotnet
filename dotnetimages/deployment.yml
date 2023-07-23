@@ -43,5 +43,5 @@ spec:
         - name: CONFIG_KEY
           valueFrom:
             configMapKeyRef:
-              name: dotnetimage-configmap
+              name: dotnet-1-web-configmap
               key: ENV_VARIABLE_1
