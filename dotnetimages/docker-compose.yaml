@@ -1,0 +1,6 @@
+version: '3'
+services:
+  my_container:
+    image: yasmeenmaligeli/dotnet-1-web:latest
+    ports:
+      - "8081:8080"
