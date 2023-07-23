@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: dotnet
+  name: shaik
   namespace: yasmeen
 spec:
   podSelector:
@@ -13,4 +13,9 @@ spec:
     - from:
       - podSelector:
           matchLabels:
-            role: dotnet
+            role: moon
+  egress:
+    - to: 
+      - podSelector:
+          matchLabels:
+            app: dotnet

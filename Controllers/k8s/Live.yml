@@ -12,21 +12,21 @@ spec:
   selector:
     matchLabels:
       app: dotnet
-template:
-  metadata:
-    labels:
-      app: dotnet
+  template:
+    metadata:
+      labels:
+        app: dotnet
     spec:
       containers:
       - name: dotnet
-      image: probe1.azurecr.io/dotnet:1.0
-      ports:
-       - containerPort: 80
-      resources:
-        requests:
-          cpu: "100m" 
-        limits:
-          cpu: "300m" 
+        image: probe1.azurecr.io/dotnet:1.0
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: "100m" 
+          limits:
+            cpu: "300m" 
         livenessProbe:
           httpGet:
             path: /healthz

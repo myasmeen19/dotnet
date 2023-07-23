@@ -1,5 +1,6 @@
+# service-account.yaml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: dotnet
+  name: sun
   namespace: yasmeen
