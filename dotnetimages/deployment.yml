@@ -11,37 +11,37 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: dottnet-1-web
+      app: dotnet-1-web
   template:
     metadata:
       labels:
         app: dotnet-1-web
     spec:
       containers:
-      - name: dotnet-1-web
-      image: probe1.azurecr.io/dotnet-1-web
-      ports:
-        - containerPort: 5000
-      resources:
-         requests:
-          cpu: "100m" 
-      limits:
-          cpu: "300m" 
-      livenessProbe:
+      - name: dotnetimage
+        image: probe1.azurecr.io/dottnetimage
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: "100m" 
+          limits:
+            cpu: "300m" 
+        livenessProbe:
           httpGet:
             path: /healthz
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 5
-      readinessProbe:
+        readinessProbe:
           httpGet:
             path: /readiness
             port: 80
           initialDelaySeconds: 5
           periodSeconds: 10
-      env:
+        env:
         - name: CONFIG_KEY
           valueFrom:
-            onfigMapKeyRef:
-              name: dottnet-1-web-configmap
-              
+            configMapKeyRef:
+              name: dotnetimage-configmap
+              key: ENV_VARIABLE_1
