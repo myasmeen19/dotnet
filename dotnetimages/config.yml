@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: myapp-configmap
+  name: dotnet-1-web-configmap
   namespace: yasmeen
 data:
   ENV_VARIABLE_1: value1
