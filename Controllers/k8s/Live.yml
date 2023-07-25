@@ -26,7 +26,7 @@ spec:
           requests:
             cpu: "100m" 
           limits:
-            cpu: "300m" 
+           cpu: "300m" 
         livenessProbe:
           httpGet:
             path: /healthz
