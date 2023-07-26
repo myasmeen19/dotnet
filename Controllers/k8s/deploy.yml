@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: docker
-  namespace: yasmeen
+  namespace: mynamespace
   labels:
     app: myapp
 spec:
@@ -28,6 +28,6 @@ spec:
         effect: NoSchedule
       containers:
       - name: dockerdep-10-app
-      image: probe1.azurecr.io/dotnet:1.0
-      ports:
-       - containerPort: 80
+        image: pknnd/dotnetdemo-app
+        ports:
+        - containerPort: 80
