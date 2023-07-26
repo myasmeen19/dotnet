@@ -16,8 +16,7 @@ spec:
     metadata:
       labels:
         app: dotnet
-    spec:
-      containers:
+      spec:
       - name: dotnet
         image: probe1.azurecr.io/dotnet:1.0
         ports:
@@ -25,8 +24,8 @@ spec:
         resources:
           requests:
             cpu: "100m" 
-          limits:
-           cpu: "300m" 
+        limits:
+         cpu: "300m" 
         livenessProbe:
           httpGet:
             path: /healthz

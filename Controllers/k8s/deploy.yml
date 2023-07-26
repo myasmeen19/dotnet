@@ -1,24 +1,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dotnet
+  name: docker
   namespace: yasmeen
   labels:
-    app: dotnet
+    app: myapp
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
-      app: dotnet
+      app: myapp
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
   template:
     metadata:
       labels:
-        app: dotnet
+        app: myapp
     spec:
+      serviceAccountName: default
+      tolerations:    # Add the tolerations section for Tolerations
+      - key: user
+        operator: Equal
+        value: yasmeen
+        effect: NoSchedule
       containers:
-      - name: dotnet
-        image: probe1.azurecr.io/dotnet:1.0
-        ports:
-        - containerPort: 80
-      imagePullSecrets:
-       - name: yasu
+      - name: dockerdep-10-app
+      image: probe1.azurecr.io/dotnet:1.0
+      ports:
+       - containerPort: 80
