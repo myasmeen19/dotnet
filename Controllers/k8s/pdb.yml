@@ -1,0 +1,10 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: sun-app-pdb
+  namespace: yasmeen
+spec:
+  minAvailable: 1  
+  selector:
+    matchLabels:
+      app: sun-app
